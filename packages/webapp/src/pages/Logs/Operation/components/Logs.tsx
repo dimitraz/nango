@@ -8,13 +8,13 @@ import { useDebounce, useInterval, useMount } from 'react-use';
 
 import { LogRow } from './LogRow';
 import { PeriodSelector } from '../../../../components/ui/PeriodSelector';
-import { SimpleTooltip } from '../../../../components/ui/SimpleTooltip';
 import { useStore } from '../../../../store';
 import { apiFetch } from '../../../../utils/api';
 import { calculateTableSizing } from '../../../../utils/table';
 import { formatQuantity } from '../../../../utils/utils';
 import { ShowMessage } from '../Message/Show';
 import { columns, defaultLimit } from '../constants';
+import { ConditionalTooltip } from '@/components-v2/patterns/ConditionalTooltip';
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components-v2/ui/InputGroup';
 import { Sheet, SheetClose, SheetContent, SheetTitle } from '@/components-v2/ui/Sheet';
 import { Skeleton } from '@/components-v2/ui/Skeleton';
@@ -193,8 +193,9 @@ export const Logs: React.FC<{ operation: OperationRow; operationId: string; isLi
                     </div>
                     {operation.operation.type === 'sync' && operation.operation.action === 'run' && (
                         <div>
-                            <SimpleTooltip
-                                tooltipContent={
+                            <ConditionalTooltip
+                                condition={true}
+                                content={
                                     <>
                                         Successfull HTTP logs are sampled to 10% to reduce noise.
                                         <br /> Other logs are not sampled
@@ -202,7 +203,7 @@ export const Logs: React.FC<{ operation: OperationRow; operationId: string; isLi
                                 }
                             >
                                 (sampling is on)
-                            </SimpleTooltip>
+                            </ConditionalTooltip>
                         </div>
                     )}
                 </div>
