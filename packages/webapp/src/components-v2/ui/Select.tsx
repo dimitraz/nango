@@ -75,12 +75,12 @@ function SelectLabel({ className, ...props }: React.ComponentProps<typeof Select
     return <SelectPrimitive.Label data-slot="select-label" className={cn('text-text-secondary px-2 py-1.5 text-xs', className)} {...props} />;
 }
 
-function SelectItem({ className, children, action, ...props }: React.ComponentProps<typeof SelectPrimitive.Item> & { action?: React.ReactNode }) {
+function SelectItem({ className, children, ...props }: React.ComponentProps<typeof SelectPrimitive.Item>) {
     return (
         <SelectPrimitive.Item
             data-slot="select-item"
             className={cn(
-                "group/item h-7 focus:bg-dropdown-bg-hover focus:text-text-primary [&_svg:not([class*='text-'])]:text-text-secondary relative flex w-full cursor-default items-center gap-2 rounded p-2 pl-1 text-s leading-5 outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+                "h-7 focus:bg-dropdown-bg-hover focus:text-text-primary [&_svg:not([class*='text-'])]:text-text-secondary relative flex w-full cursor-default items-center gap-2 rounded p-2 pl-1 text-s leading-5 outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
                 className
             )}
             {...props}
@@ -91,21 +91,6 @@ function SelectItem({ className, children, action, ...props }: React.ComponentPr
                 </SelectPrimitive.ItemIndicator>
             </span>
             <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-            {action && (
-                // Inline action revealed on row hover. Stop pointer/click propagation so
-                // interacting with it doesn't select the item.
-                <span
-                    className="ml-auto pl-3 pr-3 opacity-0 transition-opacity duration-150 group-hover/item:opacity-100 focus-within:opacity-100"
-                    onPointerDown={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }}
-                    onPointerUp={(e) => e.stopPropagation()}
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    {action}
-                </span>
-            )}
         </SelectPrimitive.Item>
     );
 }
