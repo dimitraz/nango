@@ -15,7 +15,7 @@ export const buttonStyles = cva(
     {
         variants: {
             variant: {
-                primary: 'bg-white text-black disabled:bg-active-gray disabled:text-white',
+                primary: 'bg-btn-primary-bg text-btn-primary-fg hover:bg-btn-primary-hover disabled:bg-btn-primary-disabled disabled:text-text-disabled',
                 success: 'bg-green-700 text-white hover:bg-green-500',
                 danger: 'bg-red-base text-white hover:bg-red-500',
                 zombie: 'bg-transparent text-white hover:bg-active-gray',
