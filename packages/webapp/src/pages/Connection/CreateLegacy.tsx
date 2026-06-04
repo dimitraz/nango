@@ -10,8 +10,8 @@ import { useSWRConfig } from 'swr';
 
 import Nango, { AuthError } from '@nangohq/frontend';
 
-import { SecretTextArea } from '../../components-v2/patterns/SecretTextArea';
 import { ScopesInput } from '../../components-v2/patterns/ScopesInput';
+import { SecretTextArea } from '../../components-v2/patterns/SecretTextArea';
 import { useEnvironment } from '../../hooks/useEnvironment';
 import { useListIntegrations } from '../../hooks/useIntegration';
 import DashboardLayout from '../../layout/DashboardLayout';
